@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accedi | Edusogno</title>
+    <title>Eventi | Edusogno</title>
 
     <link rel="stylesheet" href="assets/styles/style.css">
 </head>
@@ -41,33 +41,52 @@
         <section>
             <div class="container">
                 <h1>
-                    Hai già un account?
+                    <?php
+                        echo 'Ciao ' . $_POST['email'] . ' ecco i tuoi eventi'
+                    ?>
                 </h1>
-                <div class="form-container">
-                    <form action="events.php" method="POST">
-                        <div>
-                            <label for="email">Inserisci l'e-mail</label>
-                            <input type="email" name="email" id="email" placeholder="name@example.com">
+
+                <div class="bullet-container">
+                    <div class="bullet-content">
+                        <div class="bullet-card">
+                            <div class="bullet">
+                                <h2>
+                                    Nome evento
+                                </h2>
+                                <div  class="bullet-time">
+                                    15-10-2022 15:00
+                                </div>
+                                <button class="btn">JOIN</button>
+                            </div>
                         </div>
 
-                        <div>
-                            <label for="password">Inserisci la password</label>
-                            <input type="text" name="password" id="password" placeholder="Scrivila qui">
+                        <div class="bullet-card">
+                            <div class="bullet">
+                                <h2>
+                                    Nome evento
+                                </h2>
+                                <div class="bullet-time">
+                                    15-10-2022 15:00
+                                </div>
+                                <button class="btn">JOIN</button>
+                            </div>
                         </div>
-                        <div>
-                            <button class="btn">ACCEDI</button>
+
+                        <div class="bullet-card">
+                            <div class="bullet">
+                                <h2>
+                                    Nome evento
+                                </h2>
+                                <div  class="bullet-time">
+                                    15-10-2022 15:00
+                                </div>
+                                <button class="btn">JOIN</button>
+                            </div>
                         </div>
-
-                        <div class="form-text">
-                            Non hai ancora un profilo? <a href="register.php">Registrati</a>
-                        </div>
-                        
-
-
-                    </form>
-
+                    </div>
                 </div>
             </div>
+            
         </section>     
 
     </main>

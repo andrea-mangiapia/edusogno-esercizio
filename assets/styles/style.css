@@ -1,0 +1,124 @@
+/* RESET */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* COMMON */
+body {
+    background-color: #D9E5F3;
+    font-family: 'DM Sans', Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #134077;
+    line-height: 31.84px;
+}
+
+.btn {
+    background-color: #0057FF;
+    width: 100%;
+    height: 59px;
+    padding: 15px;
+    color: white;
+    border-radius: 11px;
+    border: 1px solid #0057FF;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+}
+.btn:hover {
+    background-color: white;
+    color: #0057FF;
+}
+
+/* HEADER */
+header {
+    background-color: white;
+    border-radius: 0 0 13px 13px;
+    box-shadow: 0px 4px 18px -6px #0057FF;
+}
+
+.h-container {
+    padding: 35px 35px;
+}
+
+/* MAIN */
+.container {
+    padding: 100px 0;
+}
+
+/* form login and register */
+.form-container {
+    max-width: 600px;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid #134077;
+    margin: 20px auto;
+    padding: 40px;
+}
+label {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 12.94px;
+}
+input {
+    width: 100%;
+    padding: 7px 0;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 19.9px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #2D224C;
+    ;
+}
+input::placeholder {
+    color: #cccccc;
+}
+.form-text {
+    padding-top: 40px;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* bullet */
+.bullet-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 100px;
+}
+
+.bullet-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.bullet-card {
+    width: calc(100% / 3);
+    padding: 25px; 
+}
+.bullet {
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #134077;
+    padding: 20px;
+}
+.bullet-time {
+    color: #cccccc;
+    padding: 10px 0;
+}
+
+@media screen and (max-width: 576px) {
+    .bullet-card {
+        width: 100%;
+        padding: 20px; 
+    }
+  }

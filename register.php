@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accedi | Edusogno</title>
+    <title>Registrazione | Edusogno</title>
 
     <link rel="stylesheet" href="assets/styles/style.css">
 </head>
@@ -41,10 +41,18 @@
         <section>
             <div class="container">
                 <h1>
-                    Hai già un account?
+                    Crea il tuo account?
                 </h1>
                 <div class="form-container">
                     <form action="events.php" method="POST">
+                        <div>
+                            <label for="nome">Inserisci il nome</label>
+                            <input type="text" name="nome" id="nome" placeholder="Mario">
+                        </div>
+                        <div>
+                            <label for="cognome">Inserisci il cognome</label>
+                            <input type="text" name="cognome" id="cognome" placeholder="Rossi">
+                        </div>
                         <div>
                             <label for="email">Inserisci l'e-mail</label>
                             <input type="email" name="email" id="email" placeholder="name@example.com">
@@ -59,7 +67,7 @@
                         </div>
 
                         <div class="form-text">
-                            Non hai ancora un profilo? <a href="register.php">Registrati</a>
+                            Hai già un account? <a href="index.php">Accedi</a>
                         </div>
                         
 
