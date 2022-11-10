@@ -1,3 +1,8 @@
+<?php
+require_once __DIR__ . '/db_connect.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +12,8 @@
     <title>Accedi | Edusogno</title>
 
     <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
 </head>
 <body>
     <header>
@@ -47,13 +54,15 @@
                     <form action="events.php" method="POST">
                         <div>
                             <label for="email">Inserisci l'e-mail</label>
-                            <input type="email" name="email" id="email" placeholder="name@example.com">
+                            <input type="email" name="email" id="email" placeholder="name@example.com" required>
                         </div>
 
-                        <div>
+                        <div class="password-container">
                             <label for="password">Inserisci la password</label>
-                            <input type="text" name="password" id="password" placeholder="Scrivila qui">
+                            <input type="password" name="password" id="password" placeholder="Scrivila qui" required>
+                            <i class="fa-solid fa-eye" id="show-password"></i>
                         </div>
+
                         <div>
                             <button class="btn">ACCEDI</button>
                         </div>
@@ -71,6 +80,8 @@
         </section>     
 
     </main>
+
+    <script type="text/javascript" src="assets/js/script.js"></script>
     
 </body>
 </html>

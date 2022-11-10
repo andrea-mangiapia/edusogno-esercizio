@@ -1,3 +1,8 @@
+<?php
+require_once __DIR__ . '/db_connect.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

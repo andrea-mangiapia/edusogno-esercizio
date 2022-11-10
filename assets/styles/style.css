@@ -77,15 +77,29 @@ input {
     border-left: 0;
     border-right: 0;
     border-bottom: 1px solid #2D224C;
-    ;
 }
-input::placeholder {
+input:focus-visible {
+    outline: none;
+    border-bottom: 1px solid #0057FF;
+}
+::placeholder {
     color: #cccccc;
 }
 .form-text {
     padding-top: 40px;
     text-align: center;
     font-size: 13px;
+}
+.password-container{
+    width: 100%;
+    position: relative;
+}
+.fa-eye, .fa-eye-slash {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+    cursor: pointer;
+    color: #0057FF;
 }
 
 /* bullet */

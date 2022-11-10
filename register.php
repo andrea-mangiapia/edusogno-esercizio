@@ -1,3 +1,19 @@
+<?php
+require_once __DIR__ . '/db_connect.php';
+
+if(isset($_POST['btn_register'])){
+    $nome = $connect->real_escape_string($_POST['nome']);
+    $cognome = $connect->real_escape_string($_POST['cognome']);
+    $email = $connect->real_escape_string($_POST['email']);
+    $password = $connect->real_escape_string($_POST['password']);
+    $password = md5($password);
+
+    $sql = "INSERT INTO utenti (nome, cognome, email, password) VALUES ('$nome', '$cognome', '$email', '$password')";
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +23,11 @@
     <title>Registrazione | Edusogno</title>
 
     <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    
 </head>
 <body>
+    <!-- HEADER -->
     <header>
         <div class="h-container">
             <a href="#" >
@@ -37,48 +56,62 @@
         </div>
     </header>
 
+    <!-- MAIN -->
     <main>
         <section>
             <div class="container">
                 <h1>
                     Crea il tuo account?
                 </h1>
+                <!-- form -->
                 <div class="form-container">
-                    <form action="events.php" method="POST">
+                    <form action="" method="post">
                         <div>
                             <label for="nome">Inserisci il nome</label>
-                            <input type="text" name="nome" id="nome" placeholder="Mario">
-                        </div>
-                        <div>
-                            <label for="cognome">Inserisci il cognome</label>
-                            <input type="text" name="cognome" id="cognome" placeholder="Rossi">
-                        </div>
-                        <div>
-                            <label for="email">Inserisci l'e-mail</label>
-                            <input type="email" name="email" id="email" placeholder="name@example.com">
+                            <input type="text" name="nome" id="nome" placeholder="Mario" required>
                         </div>
 
                         <div>
-                            <label for="password">Inserisci la password</label>
-                            <input type="text" name="password" id="password" placeholder="Scrivila qui">
+                            <label for="cognome">Inserisci il cognome</label>
+                            <input type="text" name="cognome" id="cognome" placeholder="Rossi" required>
                         </div>
+
                         <div>
-                            <button class="btn">ACCEDI</button>
+                            <label for="email">Inserisci l'e-mail</label>
+                            <input type="email" name="email" id="email" placeholder="name@example.com" required>
                         </div>
+
+                        <div class="password-container">
+                            <label for="password">Inserisci la password</label>
+                            <input type="password" name="password" id="password" placeholder="Scrivila qui" required>
+                            <i class="fa-solid fa-eye" id="show-password"></i>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn" name="btn_register">REGISTRATI</button>
+                        </div>
+
+                        <?php
+                            if($connect->query($sql) === true) {
+                                echo "Dati salvati con successo";
+                            } else{
+                                echo "Errore durante inserimento: " . $connect->error;
+                            }
+                            $connect->close();
+                        ?>
 
                         <div class="form-text">
                             Hai già un account? <a href="index.php">Accedi</a>
                         </div>
-                        
-
-
+                
                     </form>
-
                 </div>
+                <!-- end form -->
             </div>
         </section>     
 
     </main>
-    
+  
+    <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>
