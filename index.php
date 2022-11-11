@@ -1,6 +1,44 @@
 <?php
 require_once __DIR__ . '/db_connect.php';
 
+$email = mysqli_real_escape_string($connect, $_POST['email']);
+$password = mysqli_real_escape_string($connect, md5($_POST['password']));
+$msg = "";
+
+
+
+
+if ($email != "" && $password != ""){
+
+    // verifico se l'email è registrata nel db
+    $sql_email = "SELECT count(*) AS email FROM utenti WHERE email='".$email."'";        
+    $result_email = mysqli_query($connect, $sql_email);
+    $row_email = mysqli_fetch_array($result_email);
+
+    $count_email = $row_email['email'];
+    // se l'email è corretta
+    if($count_email > 0){
+        // verifico che anche la password sia registrata
+        $sql_psw = "SELECT count(*) AS email FROM utenti WHERE email='".$email."' AND password='".$password."'";
+        $result_psw = mysqli_query($connect, $sql_psw);
+        $row_psw = mysqli_fetch_array($result_psw);
+
+        $count_psw = $row_psw['email'];
+        // se email e password sono corrette accedo
+        if($count_psw > 0){
+            $_SESSION['email'] = $email;
+            header('Location: events.php');
+        }else{
+            $msg = "<div class='msg-error'>Password errata</div>";
+        }
+    }else{
+        $msg = "<div class='msg-error'>Email non registrato</div>";
+    }
+}else{
+    $msg = "<div class='msg-error'>Inserisci Email e Password</div>";
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +89,10 @@ require_once __DIR__ . '/db_connect.php';
                     Hai già un account?
                 </h1>
                 <div class="form-container">
-                    <form action="events.php" method="POST">
+
+                    <?php echo $msg; ?>
+                    
+                    <form action="" method="POST">
                         <div>
                             <label for="email">Inserisci l'e-mail</label>
                             <input type="email" name="email" id="email" placeholder="name@example.com" required>
@@ -77,7 +118,8 @@ require_once __DIR__ . '/db_connect.php';
 
                 </div>
             </div>
-        </section>     
+        </section> 
+    
 
     </main>
 

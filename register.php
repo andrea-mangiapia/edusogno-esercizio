@@ -10,6 +10,12 @@ if(isset($_POST['btn_register'])){
 
     $sql = "INSERT INTO utenti (nome, cognome, email, password) VALUES ('$nome', '$cognome', '$email', '$password')";
 
+    if($connect->query($sql) === true) {
+        echo "Dati salvati con successo";
+    } else{
+        echo "Errore durante inserimento: " . $connect->error;
+    }
+
 }
 
 ?>
@@ -92,12 +98,10 @@ if(isset($_POST['btn_register'])){
                         </div>
 
                         <?php
-                            if($connect->query($sql) === true) {
-                                echo "Dati salvati con successo";
-                            } else{
-                                echo "Errore durante inserimento: " . $connect->error;
-                            }
-                            $connect->close();
+
+                        
+
+                        $connect->close();
                         ?>
 
                         <div class="form-text">

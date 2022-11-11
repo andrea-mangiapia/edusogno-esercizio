@@ -96,10 +96,19 @@ input:focus-visible {
 }
 .fa-eye, .fa-eye-slash {
     position: absolute;
-    top: 40px;
+    top: 44px;
     right: 10px;
     cursor: pointer;
     color: #0057FF;
+}
+.fa-eye-slash {
+    right: 9px;
+}
+.msg-error {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
 /* bullet */

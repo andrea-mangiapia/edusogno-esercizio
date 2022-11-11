@@ -46,19 +46,20 @@ require_once __DIR__ . '/db_connect.php';
         <section>
             <div class="container">
                 <h1>
-                    <?php
-                        echo 'Ciao ' . $_POST['email'] . ' ecco i tuoi eventi'
-                    ?>
+                    
+                        Ciao [NOME] ecco i tuoi eventi
+
                 </h1>
 
                 <div class="bullet-container">
                     <div class="bullet-content">
+                        
                         <div class="bullet-card">
                             <div class="bullet">
                                 <h2>
                                     Nome evento
                                 </h2>
-                                <div  class="bullet-time">
+                                <div class="bullet-time">
                                     15-10-2022 15:00
                                 </div>
                                 <button class="btn">JOIN</button>
