@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/db_connect.php';
+$msg = "";
 
 if(isset($_POST['btn_register'])){
     $nome = $connect->real_escape_string($_POST['nome']);
@@ -11,9 +12,13 @@ if(isset($_POST['btn_register'])){
     $sql = "INSERT INTO utenti (nome, cognome, email, password) VALUES ('$nome', '$cognome', '$email', '$password')";
 
     if($connect->query($sql) === true) {
-        echo "Dati salvati con successo";
+        $msg = 
+            "<div class='msg-success'>Dati salvati con successo<br>Clicca <a href='index.php'>QUI</a> per accedere alla tua area utente</div>
+            <div class=''></div>       
+            "
+        ;
     } else{
-        echo "Errore durante inserimento: " . $connect->error;
+        $msg = "<div class='msg-error'>Errore durante inserimento: . $connect->error</div>";
     }
 
 }
@@ -71,6 +76,9 @@ if(isset($_POST['btn_register'])){
                 </h1>
                 <!-- form -->
                 <div class="form-container">
+
+                    <?php echo $msg; ?>
+
                     <form action="" method="post">
                         <div>
                             <label for="nome">Inserisci il nome</label>

@@ -104,11 +104,16 @@ input:focus-visible {
 .fa-eye-slash {
     right: 9px;
 }
-.msg-error {
-    background-color: red;
+.msg-error, .msg-success {
     color: white;
     padding: 10px;
     margin-bottom: 20px;
+}
+.msg-error {
+    background-color: red;
+}
+.msg-success {
+    background-color: #398d39;
 }
 
 /* bullet */

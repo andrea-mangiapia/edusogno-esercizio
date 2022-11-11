@@ -1,41 +1,43 @@
 <?php
 require_once __DIR__ . '/db_connect.php';
 
-$email = mysqli_real_escape_string($connect, $_POST['email']);
-$password = mysqli_real_escape_string($connect, md5($_POST['password']));
 $msg = "";
 
+if(isset($_POST['btn-login'])){
+
+    $email = mysqli_real_escape_string($connect, $_POST['email']);
+    $password = mysqli_real_escape_string($connect, md5($_POST['password']));
 
 
+    if ($email != "" && $password != ""){
 
-if ($email != "" && $password != ""){
+        // verifico se l'email è registrata nel db
+        $sql_email = "SELECT count(*) AS email FROM utenti WHERE email='".$email."'";        
+        $result_email = mysqli_query($connect, $sql_email);
+        $row_email = mysqli_fetch_array($result_email);
 
-    // verifico se l'email è registrata nel db
-    $sql_email = "SELECT count(*) AS email FROM utenti WHERE email='".$email."'";        
-    $result_email = mysqli_query($connect, $sql_email);
-    $row_email = mysqli_fetch_array($result_email);
+        $count_email = $row_email['email'];
+        // se l'email è corretta
+        if($count_email > 0){
+            // verifico che anche la password sia registrata
+            $sql_psw = "SELECT count(*) AS email FROM utenti WHERE email='".$email."' AND password='".$password."'";
+            $result_psw = mysqli_query($connect, $sql_psw);
+            $row_psw = mysqli_fetch_array($result_psw);
 
-    $count_email = $row_email['email'];
-    // se l'email è corretta
-    if($count_email > 0){
-        // verifico che anche la password sia registrata
-        $sql_psw = "SELECT count(*) AS email FROM utenti WHERE email='".$email."' AND password='".$password."'";
-        $result_psw = mysqli_query($connect, $sql_psw);
-        $row_psw = mysqli_fetch_array($result_psw);
-
-        $count_psw = $row_psw['email'];
-        // se email e password sono corrette accedo
-        if($count_psw > 0){
-            $_SESSION['email'] = $email;
-            header('Location: events.php');
+            $count_psw = $row_psw['email'];
+            // se email e password sono corrette accedo
+            if($count_psw > 0){
+                $_SESSION['email'] = $email;
+                header('Location: events.php');
+            }else{
+                $msg = "<div class='msg-error'>Password errata</div>";
+            }
         }else{
-            $msg = "<div class='msg-error'>Password errata</div>";
+            $msg = "<div class='msg-error'>Email errata</div>";
         }
     }else{
-        $msg = "<div class='msg-error'>Email non registrato</div>";
+        $msg = "<div class='msg-error'>Inserisci Email e Password</div>";
     }
-}else{
-    $msg = "<div class='msg-error'>Inserisci Email e Password</div>";
 }
 
 
@@ -91,7 +93,7 @@ if ($email != "" && $password != ""){
                 <div class="form-container">
 
                     <?php echo $msg; ?>
-                    
+
                     <form action="" method="POST">
                         <div>
                             <label for="email">Inserisci l'e-mail</label>
@@ -105,7 +107,7 @@ if ($email != "" && $password != ""){
                         </div>
 
                         <div>
-                            <button class="btn">ACCEDI</button>
+                            <button type="submit" class="btn" name="btn-login">ACCEDI</button>
                         </div>
 
                         <div class="form-text">
